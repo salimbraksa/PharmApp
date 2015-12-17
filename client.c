@@ -8,24 +8,18 @@
 
 #include "client.h"
 
-// Définition de la structure Client
-struct _client {
-    
-    long int id;
-    char* nom;
-    char* telephone;
-    char* cin;
-    
-};
-
 // Implémentation  des fonctions
-Client* creer_client(long int num, char* nom, char* telephone, char* cin) {
+Client* creer_client(char* nom, char* telephone, char* cin) {
     
     // Alloc new Client
     Client* client = (Client*)malloc(sizeof(Client));
     
-    // Set it's properties
-    client -> id = num;
+    // Alloc Properties
+    client -> nom = (char*)malloc(sizeof(char) * strlen(nom));
+    client -> telephone = (char*)malloc(sizeof(char) * strlen(telephone));
+    client -> cin = (char*)malloc(sizeof(char) * strlen(cin));
+    
+    // Set properties
     strcpy(client -> nom, nom);
     strcpy(client -> telephone, telephone);
     strcpy(client -> cin, cin);

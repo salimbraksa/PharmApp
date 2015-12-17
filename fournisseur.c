@@ -8,24 +8,18 @@
 
 #include "fournisseur.h"
 
-// Définition de la structure Fournisser
-typedef struct _fournisseur {
-    
-    long int id;
-    char* nom;
-    char* email;
-    char* telephone;
-    
-} Fournisseur;
-
 // Implémentation des fonctions
-Fournisseur* creer_fournisseur(long int num, char* nom, char* email, char* telephone) {
+Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone) {
     
     // Alloc new Fournisseur
     Fournisseur* fournisseur = (Fournisseur* )malloc(sizeof(Fournisseur));
     
+    // Alloc properties
+    fournisseur -> nom = (char*)malloc(sizeof(char) * strlen(nom));
+    fournisseur -> email = (char*)malloc(sizeof(char) * strlen(email));
+    fournisseur -> telephone = (char*)malloc(sizeof(char) * strlen(telephone));
+    
     // Set it's properties
-    fournisseur -> id = num;
     strcpy(fournisseur -> nom, nom);
     strcpy(fournisseur -> email, email);
     strcpy(fournisseur -> telephone, telephone);

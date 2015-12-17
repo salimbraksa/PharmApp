@@ -13,10 +13,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-/// Modèle Client
-typedef struct _client Client;
+/// Définition de la structure Client
+typedef struct _client {
+    
+    long int id;
+    char* nom;
+    char* telephone;
+    char* cin;
+    
+} Client;
 
 /// Permet de créer un nouveau client
-Client* creer_client(long int num, char* nom, char* telephone, char* cin);
+Client* creer_client(char* nom, char* telephone, char* cin);
 
 #endif /* client_h */

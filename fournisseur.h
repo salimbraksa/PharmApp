@@ -13,10 +13,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-/// Modèle Fournisseur
-typedef struct _fournisseur Fournisseur;
+/// Définition de la structure Fournisser
+typedef struct _fournisseur {
+    
+    long int id;
+    char* nom;
+    char* email;
+    char* telephone;
+    
+} Fournisseur;
 
 /// Permet de créer un nouveau Fournisseur
-Fournisseur* creer_fournisseur(long int num, char* nom, char* email, char* telephone);
+Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone);
 
 #endif /* fournisseur_h */

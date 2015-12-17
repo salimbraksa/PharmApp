@@ -7,9 +7,13 @@
 //
 
 #include <stdio.h>
+#include "fournisseur.h"
+#include "client.h"
 
 int main(int argc, const char * argv[]) {
-   // insert code here...
-   printf("Hello, World!\n");
+    
+    Client* client = creer_client("Salim", "0635294145", "BK313998");
+    printf("CIN: %s\n", client->cin);
+    
     return 0;
 }
