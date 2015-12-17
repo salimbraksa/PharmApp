@@ -10,6 +10,8 @@
 #define fournisseur_h
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /// Modèle Fournisseur
 typedef struct _fournisseur Fournisseur;
