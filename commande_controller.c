@@ -8,27 +8,18 @@
 
 #include "commande_controller.h"
 
-
-void sauvegarder_commande(Commande* commande){
-    FILE* flot;
-
-    ///si liste non vide
-    if(commande!=NULL){
-
-            ///ouvrir un fichier binaire en écriture : suffixe b
-            if((flot=fopen("Commandes","wb"))!=NULL){
-
-                /// parcourir la liste jusque fin
-                if(commande!=NULL){
-
-                    fwrite(commande,sizeof(commande),1,flot); // copier chaque maillon
-                }
-                /// fermer le fichie
-                fclose(flot);
-            }
-            else
-            printf("Erreur création fichier\n");
-     }
-     else
-        printf("Pas de sauvegarde pour d'une command vide !\n");// optionel
+void sauvegarder_commande(char* filename, Commande* commande){
+    
+    // Declaration du fichier
+    FILE* flot = fopen(filename, "ab");
+    
+    // Tester si flot et commande ne sont pas NULL
+    if (!commande || !flot) return;
+    
+    // Sauvegarder la commande
+    fwrite(commande,sizeof(commande),1,flot);
+    
+    // Fermer le fichier
+    fclose(flot);
+    
 }
