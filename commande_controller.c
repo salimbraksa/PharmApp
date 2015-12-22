@@ -13,7 +13,7 @@ void sauvegarder_commande(char* filename, Commande* commande){
     // Declaration du fichier
     FILE* flot = fopen(filename, "ab");
     
-    // Tester si flot et commande ne sont pas NULL
+    // Tester si flot ou commande ne sont pas NULL
     if (!commande || !flot) return;
     
     // Sauvegarder la commande
