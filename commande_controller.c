@@ -8,14 +8,19 @@
 
 #include "commande_controller.h"
 
+void sauvegarder_commande(char* filename, Commande* commande){
 
-void sauvegarder_commande(const char *nomFichier ,Commande* commande){
-    FILE* flot ;
-    ///si liste non vide
-    if(commande!=NULL ||((flot=fopen(nomFichier,"wb"))!=NULL)){
-        /// copier la commande dans le fichier passé en argument
-        fwrite(commande,sizeof(commande),1,flot);
-        /// fermer le fichier
-        fclose(flot);
-                }
+    // Declaration du fichier
+    FILE* flot = fopen(filename, "ab");
+
+    // Tester si flot et commande ne sont pas NULL
+    if (!commande || !flot) return;
+
+    // Sauvegarder la commande
+    fwrite(commande,sizeof(commande),1,flot);
+
+    // Fermer le fichier
+    fclose(flot);
+
+
 }
