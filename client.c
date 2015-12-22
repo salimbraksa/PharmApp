@@ -8,6 +8,10 @@
 
 #include "client.h"
 
+// Helpers Prototypes
+
+void set_client_data(Client* client, char* nom, char* telephone, char* cin);
+
 // Implémentation des fonctions
 
 Client* creer_client(char* nom, char* telephone, char* cin) {
@@ -21,13 +25,15 @@ Client* creer_client(char* nom, char* telephone, char* cin) {
     client -> cin = (char*)malloc(sizeof(char) * strlen(cin));
     
     // Set properties
-    strcpy(client -> nom, nom);
-    strcpy(client -> telephone, telephone);
-    strcpy(client -> cin, cin);
+    set_client_data(client, nom, telephone, cin);
     
     // Return
     return client;
     
+}
+
+void modifier_client(Client* client, char* nom, char* telephone, char* cin) {
+    set_client_data(client, nom, telephone, cin);
 }
 
 void free_client(Client* client) {
@@ -39,5 +45,15 @@ void free_client(Client* client) {
     
     // Free Client
     free(client);
+    
+}
+
+// Helpers
+
+void set_client_data(Client* client, char* nom, char* telephone, char* cin) {
+    
+    strcpy(client -> nom, nom);
+    strcpy(client -> cin, cin);
+    strcpy(client -> telephone, telephone);
     
 }

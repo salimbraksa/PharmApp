@@ -28,6 +28,12 @@ Fournisseur* creer_fournisseur(char* nom,
                                char* email,
                                char* telephone);
 
+/// Permet de modifier les informations d'un fournisseur
+void modifier_fournisseur(Fournisseur* fournisseur,
+                          char* nom,
+                          char* email,
+                          char* telephone);
+
 /// Libérer l'espace alloué par le Fournisseur
 void free_fournisseur(Fournisseur* fournisseur);
 

@@ -8,6 +8,10 @@
 
 #include "fournisseur.h"
 
+// Helpers Prototypes
+
+void set_fournisseur_data(Fournisseur* fournisseur, char* nom, char* email, char* telephone);
+
 // Implémentation des fonctions
 
 Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone) {
@@ -21,13 +25,15 @@ Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone) {
     fournisseur -> telephone = (char*)malloc(sizeof(char) * strlen(telephone));
     
     // Set it's properties
-    strcpy(fournisseur -> nom, nom);
-    strcpy(fournisseur -> email, email);
-    strcpy(fournisseur -> telephone, telephone);
+    set_fournisseur_data(fournisseur, nom, email, telephone);
     
     // Return
     return fournisseur;
     
+}
+
+void modifier_fournisseur(Fournisseur* fournisseur, char* nom, char* email, char* telephone) {
+    set_fournisseur_data(fournisseur, nom, email, telephone);
 }
 
 void free_fournisseur(Fournisseur* fournisseur) {
@@ -39,5 +45,15 @@ void free_fournisseur(Fournisseur* fournisseur) {
     
     // Free Fournisseur
     free(fournisseur);
+    
+}
+
+// Helpers
+
+void set_fournisseur_data(Fournisseur* fournisseur, char* nom, char* email, char* telephone) {
+    
+    strcpy(fournisseur -> nom, nom);
+    strcpy(fournisseur -> email, email);
+    strcpy(fournisseur -> telephone, telephone);
     
 }

@@ -28,6 +28,12 @@ Client* creer_client(char* nom,
                      char* telephone,
                      char* cin);
 
+/// Permet de modifier les informations d'un client
+void modifier_client(Client* client,
+                     char* nom,
+                     char* telephone,
+                     char* cin);
+
 /// Libérer l'espace alloué par le Client
 void free_client(Client* client);
 
