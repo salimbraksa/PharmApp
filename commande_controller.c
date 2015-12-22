@@ -7,3 +7,11 @@
 //
 
 #include "commande_controller.h"
+#include "medicament.h"
+#include "commande.h"
+
+/// Permet d'ajouter un médicament à une commande
+void commande_ajouter_medicament(Commande* commande, Medicament* medicament);
+
+/// Permet de sauvegarder la commande dans un fichier
+void sauvegarder_commande(FILE* file, Commande* commande);
