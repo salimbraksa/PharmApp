@@ -2,8 +2,8 @@
 //  array.c
 //  array
 //
-//  Created by Salim Braksa on 12/21/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/21/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #include "array.h"

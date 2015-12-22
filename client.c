@@ -2,13 +2,14 @@
 //  client.c
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/17/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/17/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #include "client.h"
 
-// Implémentation  des fonctions
+// Implémentation des fonctions
+
 Client* creer_client(char* nom, char* telephone, char* cin) {
     
     // Alloc new Client
@@ -26,5 +27,17 @@ Client* creer_client(char* nom, char* telephone, char* cin) {
     
     // Return
     return client;
+    
+}
+
+void free_client(Client* client) {
+    
+    // Free Pointers
+    free(client -> nom);
+    free(client -> cin);
+    free(client -> telephone);
+    
+    // Free Client
+    free(client);
     
 }

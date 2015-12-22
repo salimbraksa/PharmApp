@@ -2,8 +2,8 @@
 //  fournisseur.h
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/17/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/17/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #ifndef fournisseur_h
@@ -14,9 +14,9 @@
 #include <string.h>
 
 /// Définition de la structure Fournisser
-typedef struct _fournisseur {
+typedef struct {
     
-    long int id;
+    long int fournisseur_id;
     char* nom;
     char* email;
     char* telephone;
@@ -24,6 +24,11 @@ typedef struct _fournisseur {
 } Fournisseur;
 
 /// Permet de créer un nouveau Fournisseur
-Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone);
+Fournisseur* creer_fournisseur(char* nom,
+                               char* email,
+                               char* telephone);
+
+/// Libérer l'espace alloué par le Fournisseur
+void free_fournisseur(Fournisseur* fournisseur);
 
 #endif /* fournisseur_h */

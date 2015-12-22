@@ -2,13 +2,14 @@
 //  fournisseur.c
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/17/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/17/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #include "fournisseur.h"
 
 // Implémentation des fonctions
+
 Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone) {
     
     // Alloc new Fournisseur
@@ -26,5 +27,17 @@ Fournisseur* creer_fournisseur(char* nom, char* email, char* telephone) {
     
     // Return
     return fournisseur;
+    
+}
+
+void free_fournisseur(Fournisseur* fournisseur) {
+    
+    // Free Pointers
+    free(fournisseur -> nom);
+    free(fournisseur -> telephone);
+    free(fournisseur -> email);
+    
+    // Free Fournisseur
+    free(fournisseur);
     
 }

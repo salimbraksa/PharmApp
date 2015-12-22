@@ -2,8 +2,8 @@
 //  client.h
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/17/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/17/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #ifndef client_h
@@ -14,9 +14,9 @@
 #include <string.h>
 
 /// Définition de la structure Client
-typedef struct _client {
+typedef struct {
     
-    long int id;
+    long int client_id;
     char* nom;
     char* telephone;
     char* cin;
@@ -24,6 +24,11 @@ typedef struct _client {
 } Client;
 
 /// Permet de créer un nouveau client
-Client* creer_client(char* nom, char* telephone, char* cin);
+Client* creer_client(char* nom,
+                     char* telephone,
+                     char* cin);
+
+/// Libérer l'espace alloué par le Client
+void free_client(Client* client);
 
 #endif /* client_h */
