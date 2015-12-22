@@ -23,7 +23,7 @@ void sauvegarder_commande(Commande* commande){
 
                     fwrite(commande,sizeof(commande),1,flot); // copier chaque maillon
                 }
-                /// fermer le fichier
+                /// fermer le fichie
                 fclose(flot);
             }
             else
