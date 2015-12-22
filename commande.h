@@ -15,13 +15,18 @@
 
 /// Définition de la structure Commande
 typedef struct {
-    
+
     long int commande_id;
     time_t date_time;
-    
+
     Array* medicaments_ids;
-    
+
 } Commande;
+
+typedef struct ListeCommandes{
+    Commande * commande ;
+    struct ListeCommande * suivant ;
+}ListeCommandes ;
 
 /// Permet de créer une nouvelle Commande
 Commande* creer_commande(time_t date_time,
