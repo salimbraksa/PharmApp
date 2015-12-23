@@ -19,10 +19,10 @@ void sauvegarder_commande(char* filename, Commande* commande){
     
     // Sauvegarder la commande
     fwrite(commande, sizeof(Commande), 1, flot);
-    
+
     // Fermer le fichier
     fclose(flot);
-    
+
 }
 
 CommandesLinkedList* get_commandes(char* filename) {
