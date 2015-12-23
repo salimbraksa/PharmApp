@@ -23,5 +23,4 @@ void sauvegarder_commande(char* filename, Commande* commande);
 /// Permet de charger tout les commandes à partir d'un fichier
 CommandesLinkedList* get_commandes(char* filename);
 
-
 #endif /* commande_controller_h */

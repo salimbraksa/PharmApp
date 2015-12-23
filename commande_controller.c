@@ -7,7 +7,6 @@
 //
 
 #include "commande_controller.h"
-#include <time.h>
 
 void sauvegarder_commande(char* filename, Commande* commande){
     
