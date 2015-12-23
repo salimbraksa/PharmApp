@@ -10,14 +10,18 @@
 #define commande_controller_h
 
 #include <stdio.h>
+#include "commandes_linked_list.h"
 #include "medicament.h"
 #include "commande.h"
 
 /// Permet d'ajouter un médicament à une commande
 void commande_ajouter_medicament(Commande* commande, Medicament* medicament);
 
-/// Permet de sauvegarder la commande dans un fichie
+/// Permet de sauvegarder la commande dans un fichier
 void sauvegarder_commande(char* filename, Commande* commande);
+
+/// Permet de charger tout les commandes à partir d'un fichier
+CommandesLinkedList* get_commandes(char* filename);
 
 
 #endif /* commande_controller_h */

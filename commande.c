@@ -10,26 +10,19 @@
 
 // Implémentation des fonctions
 
-Commande* creer_commande(time_t date_time, Array* medicaments_ids) {
+Commande* creer_commande(time_t date_time, int nombre_medicaments, int medicaments_ids[MAX_MEDICAMENTS_IDS]) {
     
     // Alloc new Commande
     Commande* commande = (Commande*)malloc(sizeof(Commande));
     
     // Set properties
     commande -> date_time = date_time;
-    commande -> medicaments_ids = medicaments_ids;
+    commande -> nombre_medicaments = nombre_medicaments;
+    for (int i = 0; i < nombre_medicaments; i++) {
+        commande -> medicaments_ids[i] = medicaments_ids[i];
+    }
     
     // Return
     return commande;
-    
-}
-
-void free_commande(Commande* commande) {
-    
-    // Free Array
-    array_free(commande -> medicaments_ids);
-    
-    // Free la Commande
-    free(commande);
     
 }
