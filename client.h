@@ -15,12 +15,12 @@
 
 /// Définition de la structure Client
 typedef struct {
-    
+
     long int client_id;
     char* nom;
     char* telephone;
     char* cin;
-    
+
 } Client;
 
 /// Permet de créer un nouveau client
@@ -36,5 +36,6 @@ void modifier_client(Client* client,
 
 /// Libérer l'espace alloué par le Client
 void free_client(Client* client);
+
 
 #endif /* client_h */

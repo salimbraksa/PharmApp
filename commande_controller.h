@@ -17,7 +17,10 @@
 void commande_ajouter_medicament(Commande* commande, Medicament* medicament);
 
 /// Permet de sauvegarder la commande dans un fichie
-void sauvegarder_commande(char* filename, Commande* commande);
+void sauvegarder_Commande(char* filename, Commande* commande);
+
+/// Permet de  charger  la commande d'un fichier
+void Charger_commande(char* filename);
 
 
 #endif /* commande_controller_h */
