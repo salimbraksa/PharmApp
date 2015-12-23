@@ -8,11 +8,13 @@
 
 #include <stdio.h>
 #include <time.h>
+#include "commande_controller.h"
+#include "constants.h"
 
 int main(int argc, const char * argv[]) {
     
-    time_t now = time(NULL);
-    printf("Time is %s", ctime(&now));
+    // Add Commande
+    CommandesLinkedList* list = get_commandes(COMMANDES_FILENAME);
     
     return 0;
 }
