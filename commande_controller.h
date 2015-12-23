@@ -20,6 +20,9 @@ void commande_ajouter_medicament(Commande* commande, Medicament* medicament);
 /// Permet de sauvegarder la commande dans un fichier
 void sauvegarder_commande(char* filename, Commande* commande);
 
+/// Permet de retourner le dernier id d'une commande qui peut être NULL
+Commande* get_last_commande(char* filename);
+
 /// Permet de charger tout les commandes à partir d'un fichier
 CommandesLinkedList* get_commandes(char* filename);
 

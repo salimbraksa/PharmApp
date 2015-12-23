@@ -7,8 +7,14 @@
 //
 
 #include <stdio.h>
+#include <time.h>
+#include "commande_controller.h"
+#include "constants.h"
 
 int main(int argc, const char * argv[]) {
+    
+    // Add Commande
+    CommandesLinkedList* list = get_commandes(COMMANDES_FILENAME);
     
     return 0;
 }

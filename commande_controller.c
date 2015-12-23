@@ -16,12 +16,35 @@ void sauvegarder_commande(char* filename, Commande* commande){
     // Tester si flot ou commande ne sont pas NULL
     if (!commande || !flot) return;
     
+    // Set id
+    long int new_id = get_last_commande(filename) -> commande_id + 1;
+    commande -> commande_id = new_id;
+    
     // Sauvegarder la commande
     fwrite(commande, sizeof(Commande), 1, flot);
 
     // Fermer le fichier
     fclose(flot);
 
+}
+
+Commande* get_last_commande(char* filename) {
+    
+    // Ouvrir le fichier
+    FILE* flot = fopen(filename, "rb");
+    
+    // Tester si flot ne sont pas NULL
+    if (!flot) return NULL;
+    
+    // Pointer sur la derniere commande dans le fichier
+    fseek(flot, -sizeof(Commande), SEEK_END);
+    
+    // Lire la derniere commande
+    Commande* commande = (Commande*)malloc(sizeof(Commande));
+    fread(commande, sizeof(Commande), 1, flot);
+    
+    return commande;
+    
 }
 
 CommandesLinkedList* get_commandes(char* filename) {
