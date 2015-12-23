@@ -21,13 +21,9 @@ typedef struct _medicaments_linked_list {
 } MedicamentsLinkedList ;
 
 /// Permet de créer un nouveau noeud qui contient un medicament
-MedicamentsLinkedList* linked_list_Medicaments_new(Medicament* medicament);
+MedicamentsLinkedList* linked_list_medicaments_new(Medicament* medicament);
 
-/// Permet d'ajouter un medicament  à la liste chainée des medicaments
-
-/*
-do not use the terme  "list" because it is use by c++ so use ' liste' */
-
-void linked_list_Medicaments_add(MedicamentsLinkedList ** liste, Medicament* medicament);
+/// Permet d'ajouter un medicament ˆ la liste chainŽe des medicaments
+void linked_list_Medicaments_add(MedicamentsLinkedList ** list, Medicament* medicament);
 
 #endif /* Medicaments_linked_list_h */

@@ -12,7 +12,7 @@
 
 #include "client.h"
 
-/// Liste chainée des clients
+/// Liste chaine des clients
 typedef struct _clients_linked_list {
 
     Client* client ;
@@ -20,14 +20,10 @@ typedef struct _clients_linked_list {
 
 } ClientsLinkedList ;
 
-/// Permet de créer un nouveau noeud qui contient un client
-ClientsLinkedList* linked_list_Clients_new(Client* client);
+/// Permet de crer un nouveau noeud qui contient un client
+ClientsLinkedList* linked_list_clients_new(Client* client);
 
 /// Permet d'ajouter un client  à la liste chainée des clients
-
-/*
-do not use the terme  "list" because it is use by c++ so use ' liste' */
-
-void linked_list_Clients_add(ClientsLinkedList ** liste, Client* client);
+void linked_list_clients_add(ClientsLinkedList ** list, Client* client);
 
 #endif /* Clients_linked_list_h */

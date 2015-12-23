@@ -17,16 +17,8 @@
 /// Permet d'ajouter un médicament à une commande
 void commande_ajouter_medicament(Commande* commande, Medicament* medicament);
 
-<<<<<<< HEAD
-/// Permet de sauvegarder la commande dans un fichie
-void sauvegarder_Commande(char* filename, Commande* commande);
-
-/// Permet de  charger  la commande d'un fichier
-void Charger_commande(char* filename);
-=======
 /// Permet de sauvegarder la commande dans un fichier
 void sauvegarder_commande(char* filename, Commande* commande);
->>>>>>> 754a02282c8f64cbbded3ea10b3b43e02abda968
 
 /// Permet de retourner le dernier id d'une commande qui peut être NULL
 Commande* get_last_commande(char* filename);

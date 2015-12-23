@@ -4,10 +4,10 @@
 //  PharmApp
 //
 //  Created by Boutaib issam on 12/23/15.
-//  Copyright © 2015 Boutaib issam. All rights reserved.
+//  Copyright Â© 2015 Boutaib issam. All rights reserved.
 //
 
-#include "client_linked_list.h"
+#include "clients_linked_list.h"
 
 ClientsLinkedList* linked_list_Clients_new(Client* client) {
 
@@ -18,16 +18,16 @@ ClientsLinkedList* linked_list_Clients_new(Client* client) {
 
 }
 
-void linked_list_Clients_add(ClientsLinkedList** liste, Client* client) {
+void linked_list_clients_add(ClientsLinkedList** list, Client* client) {
 
     // If *list is NULL, then just create a new one
-    if (!(*liste)) {
-        *liste = linked_list_Clients_new(client);
+    if (!(*list)) {
+        *list = linked_list_Clients_new(client);
         return;
     }
 
     // Current node, and previous node
-    ClientsLinkedList* current_node = *liste;
+    ClientsLinkedList* current_node = *list;
     ClientsLinkedList* previous_node = NULL;
 
     // Iterate through list

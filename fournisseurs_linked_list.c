@@ -3,10 +3,10 @@
 //  PharmApp
 //
 //  Created by boutaib issam on 12/23/15.
-//  Copyright © 2015 boutaib issam. All rights reserved.
+//  Copyright ï¿½ 2015 boutaib issam. All rights reserved.
 //
 
-#include "fournisseur_linked_list.h"
+#include "fournisseurs_linked_list.h"
 
 FournisseursLinkedList* linked_list_Fournisseurs_new(Fournisseur* fournisseur) {
 
@@ -17,16 +17,16 @@ FournisseursLinkedList* linked_list_Fournisseurs_new(Fournisseur* fournisseur) {
 
 }
 
-void linked_list_Fournisseurs_add(FournisseursLinkedList** liste, Fournisseur* fournisseur) {
+void linked_list_fournisseurs_add(FournisseursLinkedList** list, Fournisseur* fournisseur) {
 
     // If *list is NULL, then just create a new one
-    if (!(*liste)) {
-        *liste = linked_list_Fournisseurs_new(fournisseur);
+    if (!(*list)) {
+        *list = linked_list_Fournisseurs_new(fournisseur);
         return;
     }
 
     // Current node, and previous node
-    FournisseursLinkedList* current_node = *liste;
+    FournisseursLinkedList* current_node = *list;
     FournisseursLinkedList* previous_node = NULL;
 
     // Iterate through list
