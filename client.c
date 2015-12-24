@@ -19,11 +19,6 @@ Client* creer_client(char* nom, char* telephone, char* cin) {
     // Alloc new Client
     Client* client = (Client*)malloc(sizeof(Client));
     
-    // Alloc Properties
-    client -> nom = (char*)malloc(sizeof(char) * strlen(nom));
-    client -> telephone = (char*)malloc(sizeof(char) * strlen(telephone));
-    client -> cin = (char*)malloc(sizeof(char) * strlen(cin));
-    
     // Set properties
     set_client_data(client, nom, telephone, cin);
     
@@ -34,18 +29,6 @@ Client* creer_client(char* nom, char* telephone, char* cin) {
 
 void modifier_client(Client* client, char* nom, char* telephone, char* cin) {
     set_client_data(client, nom, telephone, cin);
-}
-
-void free_client(Client* client) {
-    
-    // Free Pointers
-    free(client -> nom);
-    free(client -> cin);
-    free(client -> telephone);
-    
-    // Free Client
-    free(client);
-    
 }
 
 // Helpers

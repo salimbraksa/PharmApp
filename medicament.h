@@ -14,16 +14,19 @@
 #include <string.h>
 #include "array.h"
 
+#define MAXIMUM_FOURNISSEURS 10
+
 /// Définition de la structure Medicament
 typedef struct {
     
     long int medicament_id;
-    char* nom;
-    char* description;
+    char nom[80];
+    char description[200];
     double prix;
     double seuil;
     
-    Array* fournisseurs_ids;
+    int nombre_fournisseurs;
+    int fournisseurs_ids[MAXIMUM_FOURNISSEURS];
     
 } Medicament;
 
@@ -32,9 +35,7 @@ Medicament* creer_medicament(char* nom,
                              char* description,
                              double prix,
                              double seuil,
-                             Array* fournisseurs_ids);
-
-/// Libérer l'espace alloué par le Médicament
-void free_medicament(Medicament* medicament);
+                             int nombre_fournisseurs,
+                             int fournisseurs_ids[MAXIMUM_FOURNISSEURS]);
 
 #endif /* Medicament_h */

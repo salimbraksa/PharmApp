@@ -17,9 +17,9 @@
 typedef struct {
 
     long int client_id;
-    char* nom;
-    char* telephone;
-    char* cin;
+    char nom[80];
+    char telephone[10];
+    char cin[8];
 
 } Client;
 
@@ -33,9 +33,5 @@ void modifier_client(Client* client,
                      char* nom,
                      char* telephone,
                      char* cin);
-
-/// Libérer l'espace alloué par le Client
-void free_client(Client* client);
-
 
 #endif /* client_h */

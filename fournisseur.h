@@ -17,9 +17,9 @@
 typedef struct {
     
     long int fournisseur_id;
-    char* nom;
-    char* email;
-    char* telephone;
+    char nom[80];
+    char email[100];
+    char telephone[10];
     
 } Fournisseur;
 
@@ -33,8 +33,5 @@ void modifier_fournisseur(Fournisseur* fournisseur,
                           char* nom,
                           char* email,
                           char* telephone);
-
-/// Libérer l'espace alloué par le Fournisseur
-void free_fournisseur(Fournisseur* fournisseur);
 
 #endif /* fournisseur_h */
