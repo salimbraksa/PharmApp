@@ -12,5 +12,6 @@
 #include <stdio.h>
 
 #define COMMANDES_FILENAME "commandes"
+#define CLIENTS_FILENAME "clients"
 
 #endif /* constants_h */

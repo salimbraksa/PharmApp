@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include <time.h>
-#include "array.h"
 
 #define MAX_MEDICAMENTS_IDS 50
 

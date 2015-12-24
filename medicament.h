@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "array.h"
 
 #define MAXIMUM_FOURNISSEURS 10
 
