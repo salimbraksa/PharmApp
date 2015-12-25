@@ -18,8 +18,8 @@ typedef struct {
 
     long int client_id;
     char nom[80];
-    char telephone[10];
-    char cin[8];
+    char telephone[11];
+    char cin[9];
 
 } Client;
 

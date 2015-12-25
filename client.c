@@ -36,7 +36,7 @@ void modifier_client(Client* client, char* nom, char* telephone, char* cin) {
 void set_client_data(Client* client, char* nom, char* telephone, char* cin) {
     
     strcpy(client -> nom, nom);
-    strcpy(client -> cin, cin);
     strcpy(client -> telephone, telephone);
+    strcpy(client -> cin, cin);
     
 }

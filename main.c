@@ -9,15 +9,14 @@
 #include <stdio.h>
 #include "constants.h"
 #include "client_controller.h"
+#include "sb_string.h"
 
 int main(int argc, const char * argv[]) {
     
     // Add Client
-    Client* client = creer_client("Chaymae", "0635294145", "BK319399");
-//    sauvegarder_client(CLIENTS_FILENAME, client);
+    ClientsLinkedList* clients = get_client_from_name(CLIENTS_FILENAME, "chaYmae");
     
-    ClientsLinkedList* clients = get_clients(CLIENTS_FILENAME);
-    printf("ID %s \n", clients -> next -> next -> client -> nom);
+    printf("Name: %s\n", clients -> client -> nom);
     
     return 0;
 }

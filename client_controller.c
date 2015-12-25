@@ -55,7 +55,7 @@ ClientsLinkedList* get_clients(char* filename) {
     // Tester si flot n'est pas NULL
     if (!flot) return NULL;
     
-    // Declarer un tableau de commandes
+    // Declarer une liste chainées de clients
     ClientsLinkedList* clients = NULL;
     
     // Lire les données du fichier
@@ -69,6 +69,48 @@ ClientsLinkedList* get_clients(char* filename) {
     fclose(flot);
     
     // Return
+    return clients;
+    
+}
+
+Client* get_client_from_id(char* filename, long int client_id) {
+    
+    // Ouvrir le fichier
+    FILE* flot = fopen(filename, "rb");
+    
+    // Tester si flot n'est pas NULL
+    if (!flot) return NULL;
+    
+    do {
+        Client* client = (Client*)malloc(sizeof(Client));
+        if (!fread(client, sizeof(Client), 1, flot)) break;
+        if (client -> client_id == client_id) return client;
+    } while (1);
+    
+    return NULL;
+    
+}
+
+ClientsLinkedList* get_client_from_name(char* filename, char* name) {
+    
+    // Ouvrir le fichier
+    FILE* flot = fopen(filename, "rb");
+    
+    // Tester si flot n'est pas NULL
+    if (!flot) return NULL;
+    
+    // Declarer une liste chainées de clients
+    ClientsLinkedList* clients = NULL;
+    
+    // Lower the name
+    char* lower_name = lower_string(name);
+    
+    do {
+        Client* client = (Client*)malloc(sizeof(Client));
+        if (!fread(client, sizeof(Client), 1, flot)) break;
+        if (strcmp(lower_string(client->nom), lower_name) == 0) linked_list_clients_add(&clients, client);
+    } while (1);
+    
     return clients;
     
 }
