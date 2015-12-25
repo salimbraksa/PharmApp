@@ -24,6 +24,6 @@ typedef struct _medicaments_linked_list {
 MedicamentsLinkedList* linked_list_medicaments_new(Medicament* medicament);
 
 /// Permet d'ajouter un medicament à la liste chainée des medicaments
-void linked_list_Medicaments_add(MedicamentsLinkedList ** list, Medicament* medicament);
+void linked_list_medicaments_add(MedicamentsLinkedList ** list, Medicament* medicament);
 
 #endif /* Medicaments_linked_list_h */

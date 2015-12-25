@@ -20,7 +20,7 @@ typedef struct {
     
     long int medicament_id;
     char nom[80];
-    char description[200];
+    char description[201];
     double prix;
     double seuil;
     

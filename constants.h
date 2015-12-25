@@ -13,5 +13,6 @@
 
 #define COMMANDES_FILENAME "commandes"
 #define CLIENTS_FILENAME "clients"
+#define MEDICAMENTS_FILENAME "medicaments"
 
 #endif /* constants_h */
