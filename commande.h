@@ -31,7 +31,4 @@ Commande* creer_commande(time_t date_time,
                          int nombre_medicamants,
                          int medicaments_ids[MAX_MEDICAMENTS_IDS]);
 
-/// Libérer l'espace alloué par la Commande
-void free_commande(Commande* commande);
-
 #endif /* commande_h */

@@ -14,9 +14,9 @@
 int main(int argc, const char * argv[]) {
     
     // Add Client
-    ClientsLinkedList* clients = get_client_from_name(CLIENTS_FILENAME, "chaYmae");
+    ClientsLinkedList* clients = get_client_from_name(CLIENTS_FILENAME, "Salim");
     
-    printf("Name: %s\n", clients -> client -> nom);
+    printf("Name: %ld\n", clients -> next -> client -> client_id);
     
     return 0;
 }
