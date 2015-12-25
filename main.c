@@ -13,8 +13,8 @@
 int main(int argc, const char * argv[]) {
     
     // Add Medicament
-    Fournisseur* fournisseur = get_last_fournisseur(FOURNISSEURS_FILENAME);
-    printf("ID %ld\n", fournisseur -> fournisseur_id);
+    Fournisseur* fournisseur = get_fournisseur_from_id(FOURNISSEURS_FILENAME, 2);
+    printf("Name: %s\n", fournisseur -> nom);
     
     return 0;
 }

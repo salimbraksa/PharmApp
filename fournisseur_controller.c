@@ -72,3 +72,21 @@ FournisseursLinkedList* get_fournisseurs(char* filename) {
     return fournisseurs;
     
 }
+
+Fournisseur* get_fournisseur_from_id(char* filename, long int fournisseur_id) {
+    
+    // Ouvrir le fichier
+    FILE* flot = fopen(filename, "rb");
+    
+    // Tester si flot n'est pas NULL
+    if (!flot) return NULL;
+    
+    do {
+        Fournisseur* fournisseur = (Fournisseur*)malloc(sizeof(Fournisseur));
+        if (!fread(fournisseur, sizeof(Fournisseur), 1, flot)) break;
+        if (fournisseur -> fournisseur_id == fournisseur_id) return fournisseur;
+    } while (1);
+    
+    return NULL;
+    
+}

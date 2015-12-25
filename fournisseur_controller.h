@@ -20,6 +20,9 @@ void sauvegarder_fournisseur(char* filename, Fournisseur* fournisseur);
 /// Permet de retourner le dernier id d'une fournisseur qui peut être NULL
 Fournisseur* get_last_fournisseur(char* filename);
 
+/// Permet de retourner un fournisseur par son id
+Fournisseur* get_fournisseur_from_id(char* filename, long int fournisseur_id);
+
 /// Permet de charger tout les fournisseurs à partir d'un fichier
 FournisseursLinkedList* get_fournisseurs(char* filename);
 
