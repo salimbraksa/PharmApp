@@ -14,11 +14,6 @@
 #include "clients_linked_list.h"
 #include "sb_string.h"
 
-typedef enum {
-    NAME,
-    ID
-} ClientSearchType;
-
 /// Permet de sauvegarder le client dans un fichier
 void sauvegarder_client(char* filename, Client* client);
 
