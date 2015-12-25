@@ -36,7 +36,7 @@ Medicament* get_last_medicament(char* filename) {
     // Tester si flot ne sont pas NULL
     if (!flot) return NULL;
     
-    // Pointer sur la derniere commande dans le fichier
+    // Pointer sur le dernier medicament dans le fichier
     fseek(flot, -sizeof(Medicament), SEEK_END);
     
     // Lire la derniere commande
