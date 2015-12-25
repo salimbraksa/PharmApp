@@ -88,3 +88,42 @@ MedicamentsLinkedList* get_medicament_from_name(char* filename, char* name) {
     return medicaments;
     
 }
+
+FournisseursLinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament_id) {
+    
+    // Ouvrir le fichier
+    FILE* flot = fopen(filename, "rb");
+    
+    // Tester si flot n'est pas NULL
+    if (!flot) return NULL;
+    
+    // Déclarer une liste chainée de fournisseurs
+    FournisseursLinkedList* fournisseurs = NULL;
+    
+    do {
+        
+        // Itérer sur chaque médicament
+        Medicament* medicament = (Medicament*)malloc(sizeof(Medicament));
+        if (!fread(medicament, sizeof(Medicament), 1, flot)) break;
+        
+        // Si le médicament qu'on cherche est trouvé
+        if (medicament -> medicament_id == medicament_id) {
+            for (int i = 0; i < medicament -> nombre_fournisseurs; i++) {
+                
+                // Chercher le fournisseur par son id
+                int fournisseur_id = (medicament -> fournisseurs_ids)[i];
+                Fournisseur* fournisseur = (Fournisseur*)malloc(sizeof(Fournisseur));
+                fournisseur = get_fournisseur_from_id(FOURNISSEURS_FILENAME, fournisseur_id);
+                
+                // Ajouter le fournisseur à la liste si ce dernier existe
+                if (fournisseur) linked_list_fournisseurs_add(&fournisseurs, fournisseur);
+                
+            }
+            
+        }
+        
+    } while (1);
+    
+    return fournisseurs;
+    
+}

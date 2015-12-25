@@ -10,7 +10,7 @@
 
 // Implémentation des fonctions
 
-Medicament* creer_medicament(char* nom, char* description, double prix, double seuil, int nombre_fournisseurs, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
+Medicament* creer_medicament(char* nom, char* description, double prix, int seuil, int nombre_fournisseurs, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
     
     // Alloc new Medicament
     Medicament* medicament = (Medicament *)malloc(sizeof(Medicament));
@@ -20,6 +20,7 @@ Medicament* creer_medicament(char* nom, char* description, double prix, double s
     strcpy(medicament->description, description);
     medicament -> prix = prix;
     medicament -> seuil = seuil;
+    medicament -> nombre_fournisseurs = nombre_fournisseurs;
     for (int i = 0; i < nombre_fournisseurs; i++) {
         (medicament -> fournisseurs_ids)[i] = fournisseurs_ids[i];
     }

@@ -8,13 +8,12 @@
 
 #include <stdio.h>
 #include "constants.h"
-#include "fournisseur_controller.h"
+#include "medicament_controller.h"
 
 int main(int argc, const char * argv[]) {
     
     // Add Medicament
-    Fournisseur* fournisseur = get_fournisseur_from_id(FOURNISSEURS_FILENAME, 2);
-    printf("Name: %s\n", fournisseur -> nom);
-    
+    FournisseursLinkedList* fournisseurs = get_fournisseurs_from_medicament(MEDICAMENTS_FILENAME, 1);
+        
     return 0;
 }

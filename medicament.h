@@ -22,7 +22,7 @@ typedef struct {
     char nom[80];
     char description[201];
     double prix;
-    double seuil;
+    int seuil;
     
     int nombre_fournisseurs;
     int fournisseurs_ids[MAXIMUM_FOURNISSEURS];
@@ -33,7 +33,7 @@ typedef struct {
 Medicament* creer_medicament(char* nom,
                              char* description,
                              double prix,
-                             double seuil,
+                             int seuil,
                              int nombre_fournisseurs,
                              int fournisseurs_ids[MAXIMUM_FOURNISSEURS]);
 
