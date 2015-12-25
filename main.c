@@ -8,15 +8,13 @@
 
 #include <stdio.h>
 #include "constants.h"
-#include "client_controller.h"
-#include "sb_string.h"
+#include "medicament_controller.h"
 
 int main(int argc, const char * argv[]) {
     
-    // Add Client
-    ClientsLinkedList* clients = get_client_from_name(CLIENTS_FILENAME, "Salim");
-    
-    printf("Name: %ld\n", clients -> next -> client -> client_id);
+    // Add Medicament
+    MedicamentsLinkedList* medicaments = get_medicament_from_name(MEDICAMENTS_FILENAME, "SpaSfone");
+    printf("NAME %s\n", medicaments -> medicament -> nom);
     
     return 0;
 }
