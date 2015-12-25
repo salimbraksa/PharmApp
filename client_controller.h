@@ -2,8 +2,8 @@
 //  client_controller.h
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/24/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/24/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #ifndef client_controller_h

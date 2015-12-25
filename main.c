@@ -14,6 +14,6 @@ int main(int argc, const char * argv[]) {
     
     // Add Medicament
     FournisseursLinkedList* fournisseurs = get_fournisseurs_from_medicament(MEDICAMENTS_FILENAME, 1);
-        
+    
     return 0;
 }

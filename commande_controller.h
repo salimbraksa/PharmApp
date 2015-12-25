@@ -2,8 +2,8 @@
 //  commande_controller.h
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/22/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/22/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #ifndef commande_controller_h

@@ -2,8 +2,8 @@
 //  sb_string.h
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/25/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/25/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #ifndef sb_string_h

@@ -2,8 +2,8 @@
 //  ventes_linked_list.c
 //  PharmApp
 //
-//  Created by Salim Braksa on 12/25/15.
-//  Copyright © 2015 Braksa Salim. All rights reserved.
+//  Created by Braksa - Boutaib on 12/25/15.
+//  Copyright © 2015 NSApps. All rights reserved.
 //
 
 #include "ventes_linked_list.h"
