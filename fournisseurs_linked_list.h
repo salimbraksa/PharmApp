@@ -20,10 +20,10 @@ typedef struct _fournisseurs_linked_list {
 
 } FournisseursLinkedList ;
 
-/// Permet de créer un nouveau noeud qui contient un fournisseur
+/// Permet de crer un nouveau noeud qui contient un fournisseur
 FournisseursLinkedList* linked_list_fournisseurs_new(Fournisseur* fournisseur);
 
-/// Permet d'ajouter un fournisseur ˆ la liste chainée des fournisseurs
-void linked_list_Fournisseurs_add(FournisseursLinkedList** list, Fournisseur* fournisseur);
+/// Permet d'ajouter un fournisseur ˆ la liste chaine des fournisseurs
+void linked_list_fournisseurs_add(FournisseursLinkedList** list, Fournisseur* fournisseur);
 
 #endif /* Fournisseurs_linked_list_h */

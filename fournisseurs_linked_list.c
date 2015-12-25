@@ -3,7 +3,7 @@
 //  PharmApp
 //
 //  Created by boutaib issam on 12/23/15.
-//  Copyright � 2015 boutaib issam. All rights reserved.
+//  Copyright © 2015 boutaib issam. All rights reserved.
 //
 
 #include "fournisseurs_linked_list.h"
