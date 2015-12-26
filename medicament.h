@@ -37,4 +37,13 @@ Medicament* creer_medicament(char* nom,
                              int nombre_fournisseurs,
                              int fournisseurs_ids[MAXIMUM_FOURNISSEURS]);
 
+/// Permet de modifier un Médicament
+void modifier_medicament(Medicament* medicament,
+                          char* nom,
+                          char* description,
+                          double prix,
+                          int seuil,
+                          int nombre_fournisseurs,
+                          int fournisseurs_ids[MAXIMUM_FOURNISSEURS]);
+
 #endif /* Medicament_h */

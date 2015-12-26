@@ -10,21 +10,48 @@
 
 void sauvegarder_fournisseur(char* filename, Fournisseur* fournisseur) {
     
-    // Ouvrir le fichier
-    FILE* flot = fopen(filename, "ab");
+    // Avant tout, tester si fournisseur n'est pas NULL
+    if (!fournisseur) return;
     
-    // Tester si flot ou fournisseur ne sont pas NULL
-    if (!fournisseur || !flot) return;
+    // Cherche si le médicament existe
+    // Si oui, il suffit de modifier le médicament
+    // Existant, Sinon il crée un nouveau médicament
+    // Dans la base de donnée
+    FILE* file = fopen(filename, "r+b");
     
-    // Set id
+    // Sortir si le fichier ne peux pas s'ouvrir
+    if (!file) return;
+    
+    // Itérer
+    do {
+        
+        Fournisseur* current_fournisseur = (Fournisseur*)malloc(sizeof(Fournisseur));
+        if (!fread(current_fournisseur, sizeof(Fournisseur), 1, file)) break;
+        
+        // Si le médicament est trouvé
+        if (current_fournisseur -> fournisseur_id == fournisseur -> fournisseur_id) {
+            
+            // Modifier le médicament
+            long int currPost = ftell(file);
+            fseek(file, currPost - sizeof(Fournisseur), SEEK_SET);
+            fwrite(fournisseur, sizeof(Fournisseur), 1, file);
+            
+            // Sortir de la fonction
+            fclose(file);
+            return;
+        }
+        
+    } while (1);
+    
+    // Set nouveau id
     long int new_id = get_last_fournisseur(filename) -> fournisseur_id + 1;
     fournisseur -> fournisseur_id = new_id;
     
-    // Sauvegarder la fournisseur
-    fwrite(fournisseur, sizeof(Fournisseur), 1, flot);
+    // Sauvegarder la commande
+    fwrite(fournisseur, sizeof(Fournisseur), 1, file);
     
     // Fermer le fichier
-    fclose(flot);
+    fclose(file);
     
 }
 
@@ -87,6 +114,34 @@ Fournisseur* get_fournisseur_from_id(char* filename, long int fournisseur_id) {
         if (fournisseur -> fournisseur_id == fournisseur_id) return fournisseur;
     } while (1);
     
+    // Close the file
+    fclose(flot);
+    
     return NULL;
+    
+}
+
+void remove_fournisseur(char* filename, long int fournisseur_id) {
+    
+    // Declare files
+    FILE* origin_file = fopen(filename, "rb");
+    FILE* copied_file = fopen("tmp", "wb");
+    
+    // If the system couldn't open one of the files
+    if (!origin_file || !copied_file) return;
+    
+    do {
+        Fournisseur* fournisseur = (Fournisseur*)malloc(sizeof(Fournisseur));
+        if (!fread(fournisseur, sizeof(Fournisseur), 1, origin_file)) break;
+        if (fournisseur -> fournisseur_id != fournisseur_id) fwrite(fournisseur, sizeof(Fournisseur), 1, copied_file);
+    } while (1);
+    
+    // Close files
+    fclose(origin_file);
+    fclose(copied_file);
+    
+    // Remove origin file
+    remove(filename);
+    rename("tmp", filename);
     
 }

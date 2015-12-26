@@ -13,7 +13,9 @@
 int main(int argc, const char * argv[]) {
     
     // Add Medicament
-    FournisseursLinkedList* fournisseurs = get_fournisseurs_from_medicament(MEDICAMENTS_FILENAME, 1);
+//    int ids[2] = {1, 2};
+    Medicament* medicament = get_medicament_from_id(MEDICAMENTS_FILENAME, 6);
+    printf("Medic Name %s\n", medicament -> nom);
     
     return 0;
 }

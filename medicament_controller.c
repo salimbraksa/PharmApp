@@ -10,21 +10,48 @@
 
 void sauvegarder_medicament(char* filename, Medicament* medicament) {
     
-    // Ouvrir le fichier
-    FILE* flot = fopen(filename, "ab");
+    // Avant tout, tester si medicament n'est pas NULL
+    if (!medicament) return;
     
-    // Tester si flot ou commande ne sont pas NULL
-    if (!medicament || !flot) return;
+    // Cherche si le médicament existe
+    // Si oui, il suffit de modifier le médicament
+    // Existant, Sinon il crée un nouveau médicament
+    // Dans la base de donnée
+    FILE* file = fopen(filename, "r+b");
     
-    // Set id
+    // Sortir si le fichier ne peux pas s'ouvrir
+    if (!file) return;
+    
+    // Itérer
+    do {
+        
+        Medicament* current_medicament = (Medicament*)malloc(sizeof(Medicament));
+        if (!fread(current_medicament, sizeof(Medicament), 1, file)) break;
+        
+        // Si le médicament est trouvé
+        if (current_medicament -> medicament_id == medicament -> medicament_id) {
+            
+            // Modifier le médicament
+            long int currPost = ftell(file);
+            fseek(file, currPost - sizeof(Medicament), SEEK_SET);
+            fwrite(medicament, sizeof(Medicament), 1, file);
+         
+            // Sortir de la fonction
+            fclose(file);
+            return;
+        }
+        
+    } while (1);
+    
+    // Set nouveau id
     long int new_id = get_last_medicament(filename) -> medicament_id + 1;
     medicament -> medicament_id = new_id;
     
     // Sauvegarder la commande
-    fwrite(medicament, sizeof(Medicament), 1, flot);
+    fwrite(medicament, sizeof(Medicament), 1, file);
     
     // Fermer le fichier
-    fclose(flot);
+    fclose(file);
     
 }
 

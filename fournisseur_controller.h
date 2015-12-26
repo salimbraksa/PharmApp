@@ -26,4 +26,7 @@ Fournisseur* get_fournisseur_from_id(char* filename, long int fournisseur_id);
 /// Permet de charger tout les fournisseurs à partir d'un fichier
 FournisseursLinkedList* get_fournisseurs(char* filename);
 
+/// Permet de supprimer un fournisseur
+void remove_fournisseur(char* filename, long int fournisseur_id);
+
 #endif /* fournisseur_controller_h */
