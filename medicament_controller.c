@@ -92,7 +92,7 @@ Medicament* get_medicament_from_id(char* filename, long int medicament_id) {
     
 }
 
-MedicamentsLinkedList* get_medicament_from_name(char* filename, char* name) {
+LinkedList* get_medicament_from_name(char* filename, char* name) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -101,7 +101,7 @@ MedicamentsLinkedList* get_medicament_from_name(char* filename, char* name) {
     if (!flot) return NULL;
     
     // Declarer une liste chainées de medicaments
-    MedicamentsLinkedList* medicaments = NULL;
+    LinkedList* medicaments = NULL;
     
     // Lower the name
     char* lower_name = lower_string(name);
@@ -109,14 +109,14 @@ MedicamentsLinkedList* get_medicament_from_name(char* filename, char* name) {
     do {
         Medicament* medicament = (Medicament*)malloc(sizeof(Medicament));
         if (!fread(medicament, sizeof(Medicament), 1, flot)) break;
-        if (strcmp(lower_string(medicament->nom), lower_name) == 0) linked_list_medicaments_add(&medicaments, medicament);
+        if (strcmp(lower_string(medicament->nom), lower_name) == 0) linked_list_append(&medicaments, medicament);
     } while (1);
     
     return medicaments;
     
 }
 
-FournisseursLinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament_id) {
+LinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament_id) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -125,7 +125,7 @@ FournisseursLinkedList* get_fournisseurs_from_medicament(char* filename, long in
     if (!flot) return NULL;
     
     // Déclarer une liste chainée de fournisseurs
-    FournisseursLinkedList* fournisseurs = NULL;
+    LinkedList* fournisseurs = NULL;
     
     do {
         
@@ -143,7 +143,7 @@ FournisseursLinkedList* get_fournisseurs_from_medicament(char* filename, long in
                 fournisseur = get_fournisseur_from_id(FOURNISSEURS_FILENAME, fournisseur_id);
                 
                 // Ajouter le fournisseur à la liste si ce dernier existe
-                if (fournisseur) linked_list_fournisseurs_add(&fournisseurs, fournisseur);
+                if (fournisseur) linked_list_append(&fournisseurs, fournisseur);
                 
             }
             

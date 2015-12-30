@@ -47,7 +47,7 @@ Commande* get_last_commande(char* filename) {
     
 }
 
-CommandesLinkedList* get_commandes(char* filename) {
+LinkedList* get_commandes(char* filename) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -56,13 +56,13 @@ CommandesLinkedList* get_commandes(char* filename) {
     if (!flot) return NULL;
     
     // Declarer un tableau de commandes
-    CommandesLinkedList* commandes = NULL;
+    LinkedList* commandes = NULL;
     
     // Lire les données du fichier
     do {
         Commande* commande = (Commande*)malloc(sizeof(Commande));
         if (!fread(commande, sizeof(Commande), 1, flot)) break;
-        linked_list_commandes_add(&commandes, commande);
+        linked_list_append(&commandes, commande);
     } while (1);
     
     // Fermer le fichier

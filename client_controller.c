@@ -74,7 +74,7 @@ Client* get_last_client(char* filename) {
     
 }
 
-ClientsLinkedList* get_clients(char* filename) {
+LinkedList* get_clients(char* filename) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -83,13 +83,13 @@ ClientsLinkedList* get_clients(char* filename) {
     if (!flot) return NULL;
     
     // Declarer une liste chainées de clients
-    ClientsLinkedList* clients = NULL;
+    LinkedList* clients = NULL;
     
     // Lire les données du fichier
     do {
         Client* client = (Client*)malloc(sizeof(Client));
         if (!fread(client, sizeof(Client), 1, flot)) break;
-        linked_list_clients_add(&clients, client);
+        linked_list_append(&clients, client);
     } while (1);
     
     // Fermer le fichier
@@ -118,7 +118,7 @@ Client* get_client_from_id(char* filename, long int client_id) {
     
 }
 
-ClientsLinkedList* get_client_from_name(char* filename, char* name) {
+LinkedList* get_client_from_name(char* filename, char* name) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -127,7 +127,7 @@ ClientsLinkedList* get_client_from_name(char* filename, char* name) {
     if (!flot) return NULL;
     
     // Declarer une liste chainées de clients
-    ClientsLinkedList* clients = NULL;
+    LinkedList* clients = NULL;
     
     // Lower the name
     char* lower_name = lower_string(name);
@@ -135,7 +135,7 @@ ClientsLinkedList* get_client_from_name(char* filename, char* name) {
     do {
         Client* client = (Client*)malloc(sizeof(Client));
         if (!fread(client, sizeof(Client), 1, flot)) break;
-        if (strcmp(lower_string(client->nom), lower_name) == 0) linked_list_clients_add(&clients, client);
+        if (strcmp(lower_string(client->nom), lower_name) == 0) linked_list_append(&clients, client);
     } while (1);
     
     return clients;

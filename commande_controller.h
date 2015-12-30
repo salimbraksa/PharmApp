@@ -10,7 +10,7 @@
 #define commande_controller_h
 
 #include <stdio.h>
-#include "commandes_linked_list.h"
+#include "linked_list.h"
 #include "medicament.h"
 #include "commande.h"
 
@@ -24,6 +24,6 @@ void sauvegarder_commande(char* filename, Commande* commande);
 Commande* get_last_commande(char* filename);
 
 /// Permet de charger tout les commandes à partir d'un fichier
-CommandesLinkedList* get_commandes(char* filename);
+LinkedList* get_commandes(char* filename);
 
 #endif /* commande_controller_h */

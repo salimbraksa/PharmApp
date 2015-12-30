@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "medicament.h"
-#include "medicaments_linked_list.h"
+#include "linked_list.h"
 #include "fournisseur_controller.h"
 #include "constants.h"
 #include "sb_string.h"
@@ -26,9 +26,9 @@ Medicament* get_last_medicament(char* filename);
 Medicament* get_medicament_from_id(char* filename, long int medicament_id);
 
 /// Permet de retourner un medicament à partir son nom
-MedicamentsLinkedList* get_medicament_from_name(char* filename, char* name);
+LinkedList* get_medicament_from_name(char* filename, char* name);
 
 /// Permet de retourner les fournisseurs d'un médicament
-FournisseursLinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament_id);
+LinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament_id);
 
 #endif /* medicament_controller_h */

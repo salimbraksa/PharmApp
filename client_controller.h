@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "client.h"
-#include "clients_linked_list.h"
+#include "linked_list.h"
 #include "sb_string.h"
 
 /// Permet de sauvegarder le client dans un fichier
@@ -24,9 +24,9 @@ Client* get_last_client(char* filename);
 Client* get_client_from_id(char* filename, long int client_id);
 
 /// Permet de retourner un client à partir son nom
-ClientsLinkedList* get_client_from_name(char* filename, char* name);
+LinkedList* get_client_from_name(char* filename, char* name);
 
 /// Permet de charger tout les clients à partir d'un fichier
-ClientsLinkedList* get_clients(char* filename);
+LinkedList* get_clients(char* filename);
 
 #endif /* client_controller_h */

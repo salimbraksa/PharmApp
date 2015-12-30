@@ -10,7 +10,7 @@
 #define fournisseur_controller_h
 
 #include <stdio.h>
-#include "fournisseurs_linked_list.h"
+#include "linked_list.h"
 #include "fournisseur.h"
 #include "sb_string.h"
 
@@ -24,7 +24,7 @@ Fournisseur* get_last_fournisseur(char* filename);
 Fournisseur* get_fournisseur_from_id(char* filename, long int fournisseur_id);
 
 /// Permet de charger tout les fournisseurs à partir d'un fichier
-FournisseursLinkedList* get_fournisseurs(char* filename);
+LinkedList* get_fournisseurs(char* filename);
 
 /// Permet de supprimer un fournisseur
 void remove_fournisseur(char* filename, long int fournisseur_id);

@@ -7,15 +7,22 @@
 //
 
 #include <stdio.h>
-#include "constants.h"
-#include "medicament_controller.h"
+#include "linked_list.h"
+#include "client.h"
 
 int main(int argc, const char * argv[]) {
     
-    // Add Medicament
-//    int ids[2] = {1, 2};
-    Medicament* medicament = get_medicament_from_id(MEDICAMENTS_FILENAME, 6);
-    printf("Medic Name %s\n", medicament -> nom);
+    // Experementing Generic Linked List
+    Client* client = creer_client("Salim", "0635294145", "BBK32452");
+    Client* another = creer_client("Issam", "00", "BB");
+    LinkedList* list = NULL;
+    
+    linked_list_append(&list, client);
+    linked_list_append(&list, another);
+    
+    Client* tst_client = (Client*)list -> data;
+    
+    printf("Name %s\n", tst_client->telephone);
     
     return 0;
 }

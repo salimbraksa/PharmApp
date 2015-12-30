@@ -15,7 +15,7 @@ void sauvegarder_fournisseur(char* filename, Fournisseur* fournisseur) {
     
     // Cherche si le médicament existe
     // Si oui, il suffit de modifier le médicament
-    // Existant, Sinon il crée un nouveau médicament
+    // Existant, Sinon on crée un nouveau médicament
     // Dans la base de donnée
     FILE* file = fopen(filename, "r+b");
     
@@ -74,7 +74,7 @@ Fournisseur* get_last_fournisseur(char* filename) {
     
 }
 
-FournisseursLinkedList* get_fournisseurs(char* filename) {
+LinkedList* get_fournisseurs(char* filename) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -83,13 +83,13 @@ FournisseursLinkedList* get_fournisseurs(char* filename) {
     if (!flot) return NULL;
     
     // Declarer une liste chainées de fournisseurs
-    FournisseursLinkedList* fournisseurs = NULL;
+    LinkedList* fournisseurs = NULL;
     
     // Lire les données du fichier
     do {
         Fournisseur* fournisseur = (Fournisseur*)malloc(sizeof(Fournisseur));
         if (!fread(fournisseur, sizeof(Fournisseur), 1, flot)) break;
-        linked_list_fournisseurs_add(&fournisseurs, fournisseur);
+        linked_list_append(&fournisseurs, fournisseur);
     } while (1);
     
     // Fermer le fichier
