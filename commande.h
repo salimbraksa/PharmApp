@@ -22,13 +22,13 @@ typedef struct {
     time_t date_time;
     
     int nombre_medicaments;
-    int medicaments_ids[MAX_MEDICAMENTS_IDS];
+    long int medicaments_ids[MAX_MEDICAMENTS_IDS];
 
 } Commande;
 
 /// Permet de créer une nouvelle Commande
 Commande* creer_commande(time_t date_time,
                          int nombre_medicamants,
-                         int medicaments_ids[MAX_MEDICAMENTS_IDS]);
+                         long int medicaments_ids[MAX_MEDICAMENTS_IDS]);
 
 #endif /* commande_h */

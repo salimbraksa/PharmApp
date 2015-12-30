@@ -10,12 +10,13 @@
 
 // Implémentation des fonctions
 
-Commande* creer_commande(time_t date_time, int nombre_medicaments, int medicaments_ids[MAX_MEDICAMENTS_IDS]) {
+Commande* creer_commande(time_t date_time, int nombre_medicaments, long int medicaments_ids[MAX_MEDICAMENTS_IDS]) {
     
     // Alloc new Commande
     Commande* commande = (Commande*)malloc(sizeof(Commande));
     
     // Set properties
+    commande -> commande_id = -1;
     commande -> date_time = date_time;
     commande -> nombre_medicaments = nombre_medicaments;
     for (int i = 0; i < nombre_medicaments; i++) {

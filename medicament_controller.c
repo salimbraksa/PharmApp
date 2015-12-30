@@ -7,11 +7,17 @@
 //
 
 #include "medicament_controller.h"
+#include "sb_file.h"
 
 void sauvegarder_medicament(char* filename, Medicament* medicament) {
     
     // Avant tout, tester si medicament n'est pas NULL
     if (!medicament) return;
+    
+    // Créer le fichier s'il n'existe pas
+    if (!file_exist(filename)) {
+        create_file(filename);
+    }
     
     // Cherche si le médicament existe
     // Si oui, il suffit de modifier le médicament
@@ -153,4 +159,28 @@ LinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament
     
     return fournisseurs;
     
+}
+
+Commande* medicament_add_to_commande(Medicament* medicament, Commande* commande) {
+    
+    // Ne rien faire si l'un des deux arguments est NULL ( medicament ou commande )
+    if (!medicament || !commande) return NULL;
+    
+    // La commande à utiliser
+    // Initialement, on utilise la commande
+    // Qui provient du l'argument de la fonction
+    Commande* use_commande = commande;
+    
+    // Vérifier si la commande ne peut pas contenir le médicament
+    if (commande -> nombre_medicaments >= MAX_MEDICAMENTS_IDS) {
+        long int ids[0] = {};
+        use_commande = creer_commande(time(NULL), 0, ids);
+    }
+    
+    // Ajouter l'id du médicament
+    (use_commande -> medicaments_ids)[(use_commande->nombre_medicaments)++] = medicament -> medicament_id;
+    
+    // Si la on utiliser une nouvelle commande, on doit la retourner
+    if (use_commande -> commande_id != commande -> commande_id) return use_commande;
+    return NULL;
 }

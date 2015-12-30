@@ -25,6 +25,7 @@ typedef struct {
     int seuil;
     
     int nombre_fournisseurs;
+    long int default_fournisseur_id;
     int fournisseurs_ids[MAXIMUM_FOURNISSEURS];
     
 } Medicament;
@@ -35,6 +36,7 @@ Medicament* creer_medicament(char* nom,
                              double prix,
                              int seuil,
                              int nombre_fournisseurs,
+                             long int default_fournissur_id,
                              int fournisseurs_ids[MAXIMUM_FOURNISSEURS]);
 
 /// Permet de modifier un Médicament
@@ -44,6 +46,13 @@ void modifier_medicament(Medicament* medicament,
                           double prix,
                           int seuil,
                           int nombre_fournisseurs,
+                          long int default_fournisseur_id,
                           int fournisseurs_ids[MAXIMUM_FOURNISSEURS]);
+
+/// Permet de vérifier si un fournisseur donné est vraiment un fournisseur du médicament
+int is_fournisseur_of_medicament(Medicament* medicament, long int fournisseur_id);
+
+/// Permet de modifier le fournisseur par défault du médicament
+void edit_medicament_fournisseur(Medicament* medicament, long int fournisseur_id);
 
 #endif /* Medicament_h */

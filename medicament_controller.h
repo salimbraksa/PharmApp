@@ -15,9 +15,16 @@
 #include "fournisseur_controller.h"
 #include "constants.h"
 #include "sb_string.h"
+#include "commande.h"
 
 /// Permet de sauvegarder le medicament dans un fichier
 void sauvegarder_medicament(char* filename, Medicament* medicament);
+
+/// Permet d'ajouter un médicament à une commandew
+/// Si cette commande a suffisament d'espace pour contenir
+/// Le médicament, sinon on crée une nouvelle commande
+/// Pour contenir le médicament et l'a retourne
+Commande* medicament_add_to_commande(Medicament* medicament, Commande* commande);
 
 /// Permet de retourner le dernier medicament qui peut être NULL
 Medicament* get_last_medicament(char* filename);

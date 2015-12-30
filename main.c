@@ -7,22 +7,23 @@
 //
 
 #include <stdio.h>
-#include "linked_list.h"
-#include "client.h"
+#include "medicament_controller.h"
+#include "commande_controller.h"
 
 int main(int argc, const char * argv[]) {
     
-    // Experementing Generic Linked List
-    Client* client = creer_client("Salim", "0635294145", "BBK32452");
-    Client* another = creer_client("Issam", "00", "BB");
-    LinkedList* list = NULL;
+    // Creer le medicament
+    Medicament* medicament = get_last_medicament(MEDICAMENTS_FILENAME);
     
-    linked_list_append(&list, client);
-    linked_list_append(&list, another);
+    // Creer commande
+    long int ids2[0] = {};
+    Commande* commande = creer_commande(time(NULL), 0, ids2);
     
-    Client* tst_client = (Client*)list -> data;
+    // Add med to comm
+    medicament_add_to_commande(medicament, commande);
     
-    printf("Name %s\n", tst_client->telephone);
+    // Save
+    sauvegarder_commande(COMMANDES_FILENAME, commande);
     
     return 0;
 }

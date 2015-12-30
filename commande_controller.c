@@ -7,24 +7,57 @@
 //
 
 #include "commande_controller.h"
+#include "sb_file.h"
 
 void sauvegarder_commande(char* filename, Commande* commande){
     
-    // Ouvrir le fichier
-    FILE* flot = fopen(filename, "ab");
+    // Avant tout, tester si commande n'est pas NULL
+    if (!commande) return;
     
-    // Tester si flot ou commande ne sont pas NULL
-    if (!commande || !flot) return;
+    // Créer le fichier s'il n'existe pas
+    if (!file_exist(filename)) {
+        create_file(filename);
+    }
     
-    // Set id
+    // Cherche si le médicament existe
+    // Si oui, il suffit de modifier le médicament
+    // Existant, Sinon il crée un nouveau médicament
+    // Dans la base de donnée
+    FILE* file = fopen(filename, "r+b");
+    
+    // Sortir si le fichier ne peux pas s'ouvrir
+    if (!file) return;
+    
+    // Itérer
+    do {
+        
+        Commande* current_commande = (Commande*)malloc(sizeof(Commande));
+        if (!fread(current_commande, sizeof(Commande), 1, file)) break;
+        
+        // Si le médicament est trouvé
+        if (current_commande -> commande_id == commande -> commande_id) {
+            
+            // Modifier le médicament
+            long int currPost = ftell(file);
+            fseek(file, currPost - sizeof(Commande), SEEK_SET);
+            fwrite(commande, sizeof(Commande), 1, file);
+            
+            // Sortir de la fonction
+            fclose(file);
+            return;
+        }
+        
+    } while (1);
+    
+    // Set nouveau id
     long int new_id = get_last_commande(filename) -> commande_id + 1;
     commande -> commande_id = new_id;
     
     // Sauvegarder la commande
-    fwrite(commande, sizeof(Commande), 1, flot);
-
+    fwrite(commande, sizeof(Commande), 1, file);
+    
     // Fermer le fichier
-    fclose(flot);
+    fclose(file);
 
 }
 
