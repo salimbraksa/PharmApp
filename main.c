@@ -7,23 +7,16 @@
 //
 
 #include <stdio.h>
-#include "medicament_controller.h"
+#include "constants.h"
+
 #include "commande_controller.h"
 
 int main(int argc, const char * argv[]) {
     
-    // Creer le medicament
-    Medicament* medicament = get_last_medicament(MEDICAMENTS_FILENAME);
-    
-    // Creer commande
-    long int ids2[0] = {};
-    Commande* commande = creer_commande(time(NULL), 0, ids2);
-    
-    // Add med to comm
-    medicament_add_to_commande(medicament, commande);
-    
-    // Save
-    sauvegarder_commande(COMMANDES_FILENAME, commande);
+    // Get commande
+    LinkedList* commandes = get_commandes_from_date(COMMANDES_FILENAME, "2015-12-30");
+    Commande* commande = commandes -> data;
+    printf("ID %ld\n", commande -> commande_id);
     
     return 0;
 }

@@ -23,6 +23,9 @@ void sauvegarder_commande(char* filename, Commande* commande);
 /// Permet de retourner le dernier id d'une commande qui peut être NULL
 Commande* get_last_commande(char* filename);
 
+/// Permet de retourner une liste de commandes d'une date donnée
+LinkedList* get_commandes_from_date(char* filename, char* date);
+
 /// Permet de charger tout les commandes à partir d'un fichier
 LinkedList* get_commandes(char* filename);
 

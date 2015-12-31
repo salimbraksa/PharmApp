@@ -80,6 +80,41 @@ Commande* get_last_commande(char* filename) {
     
 }
 
+LinkedList* get_commandes_from_date(char* filename, char* date) {
+    
+    // Ouvrir le fichier
+    FILE* flot = fopen(filename, "rb");
+    
+    // Tester si flot n'est pas NULL
+    if (!flot) return NULL;
+    
+    // Liste chainée de commandes
+    LinkedList* commandes = NULL;
+    
+    do {
+        
+        Commande* commande = (Commande*)malloc(sizeof(Commande));
+        if(!fread(commande, sizeof(Commande), 1, flot)) break;
+        
+        // Ajouter que les commandes dont la date égale à
+        // La date donnée par l'utilisateur
+        struct tm commande_time = *localtime(&(commande -> date_time));
+        struct tm user_time;
+        strptime(date, "%Y-%m-%d", &user_time);
+        
+        if (user_time.tm_year == commande_time.tm_year &&
+            user_time.tm_mon == commande_time.tm_mon &&
+            user_time.tm_mday == commande_time.tm_mday) {
+            linked_list_append(&commandes, commande);
+        }
+        
+    } while (1);
+
+    // Return
+    return commandes;
+
+}
+
 LinkedList* get_commandes(char* filename) {
     
     // Ouvrir le fichier
