@@ -14,8 +14,8 @@
 #include "fournisseur.h"
 #include "sb_string.h"
 
-/// Permet de sauvegarder la fournisseur dans un fichier
-void sauvegarder_fournisseur(char* filename, Fournisseur* fournisseur);
+/// Permet de save la fournisseur dans un fichier
+void save_fournisseur(char* filename, Fournisseur* fournisseur);
 
 /// Permet de retourner le dernier id d'une fournisseur qui peut être NULL
 Fournisseur* get_last_fournisseur(char* filename);

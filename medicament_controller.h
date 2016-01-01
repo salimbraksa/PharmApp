@@ -17,8 +17,8 @@
 #include "sb_string.h"
 #include "commande.h"
 
-/// Permet de sauvegarder le medicament dans un fichier
-void sauvegarder_medicament(char* filename, Medicament* medicament);
+/// Permet de save le medicament dans un fichier
+void save_medicament(char* filename, Medicament* medicament);
 
 /// Permet d'ajouter un médicament à une commandew
 /// Si cette commande a suffisament d'espace pour contenir

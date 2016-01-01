@@ -10,7 +10,7 @@
 
 // Implémentation des fonctions
 
-Commande* creer_commande(time_t date_time, int nombre_medicaments, long int medicaments_ids[MAX_MEDICAMENTS_IDS]) {
+Commande* create_commande(time_t date_time, int nombre_medicaments, long int medicaments[MAX_MEDICAMENTS_IDS][2]) {
     
     // Alloc new Commande
     Commande* commande = (Commande*)malloc(sizeof(Commande));
@@ -20,7 +20,8 @@ Commande* creer_commande(time_t date_time, int nombre_medicaments, long int medi
     commande -> date_time = date_time;
     commande -> nombre_medicaments = nombre_medicaments;
     for (int i = 0; i < nombre_medicaments; i++) {
-        commande -> medicaments_ids[i] = medicaments_ids[i];
+        commande -> medicaments[i][0] = medicaments[i][0];
+        commande -> medicaments[i][1] = medicaments[i][1];
     }
     
     // Return

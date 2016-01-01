@@ -8,7 +8,7 @@
 
 #include "client_controller.h"
 
-void sauvegarder_client(char* filename, Client* client) {
+void save_client(char* filename, Client* client) {
     
     // Avant tout, tester si client n'est pas NULL
     if (!client) return;

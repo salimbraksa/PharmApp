@@ -14,8 +14,8 @@
 #include "linked_list.h"
 #include "sb_string.h"
 
-/// Permet de sauvegarder le client dans un fichier
-void sauvegarder_client(char* filename, Client* client);
+/// Permet de save le client dans un fichier
+void save_client(char* filename, Client* client);
 
 /// Permet de retourner le dernier client qui peut être NULL
 Client* get_last_client(char* filename);

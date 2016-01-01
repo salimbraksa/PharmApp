@@ -15,5 +15,6 @@
 #define CLIENTS_FILENAME "clients"
 #define MEDICAMENTS_FILENAME "medicaments"
 #define FOURNISSEURS_FILENAME "fournisseurs"
+#define VENTES_FILENAME "ventes"
 
 #endif /* constants_h */

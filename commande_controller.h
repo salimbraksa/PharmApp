@@ -10,15 +10,17 @@
 #define commande_controller_h
 
 #include <stdio.h>
+#include "medicament_controller.h"
 #include "linked_list.h"
 #include "medicament.h"
 #include "commande.h"
+#include "sb_number.h"
 
 /// Permet d'ajouter un médicament à une commande
 void commande_ajouter_medicament(Commande* commande, Medicament* medicament);
 
-/// Permet de sauvegarder la commande dans un fichier
-void sauvegarder_commande(char* filename, Commande* commande);
+/// Permet de save la commande dans un fichier
+void save_commande(char* filename, Commande* commande);
 
 /// Permet de retourner le dernier id d'une commande qui peut être NULL
 Commande* get_last_commande(char* filename);

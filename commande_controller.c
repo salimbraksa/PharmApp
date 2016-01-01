@@ -9,50 +9,44 @@
 #include "commande_controller.h"
 #include "sb_file.h"
 
-void sauvegarder_commande(char* filename, Commande* commande){
+void save_commande(char* filename, Commande* commande){
     
-    // Avant tout, tester si commande n'est pas NULL
-    if (!commande) return;
+    // Ouvrir le fichier
+    FILE* file = fopen(filename, "ab");
     
-    // Créer le fichier s'il n'existe pas
-    if (!file_exist(filename)) {
-        create_file(filename);
-    }
-    
-    // Cherche si le médicament existe
-    // Si oui, il suffit de modifier le médicament
-    // Existant, Sinon il crée un nouveau médicament
-    // Dans la base de donnée
-    FILE* file = fopen(filename, "r+b");
-    
-    // Sortir si le fichier ne peux pas s'ouvrir
+    // Tester si le fichier est ouvert
     if (!file) return;
     
-    // Itérer
-    do {
-        
-        Commande* current_commande = (Commande*)malloc(sizeof(Commande));
-        if (!fread(current_commande, sizeof(Commande), 1, file)) break;
-        
-        // Si le médicament est trouvé
-        if (current_commande -> commande_id == commande -> commande_id) {
-            
-            // Modifier le médicament
-            long int currPost = ftell(file);
-            fseek(file, currPost - sizeof(Commande), SEEK_SET);
-            fwrite(commande, sizeof(Commande), 1, file);
-            
-            // Sortir de la fonction
-            fclose(file);
-            return;
-        }
-        
-    } while (1);
+    // Donner un nouveau id à la commande
+    Commande* last_commande = get_last_commande(filename);
+    long int last_id = ( last_commande == NULL ? 1 : last_commande->commande_id + 1);
+    commande -> commande_id = last_id;
     
-    // Set nouveau id
-    long int new_id = get_last_commande(filename) -> commande_id + 1;
-    commande -> commande_id = new_id;
-    
+    // Avant de sauvegarder la commande, vérifier que la quantité
+    // Choisi de commande d'un médicament est inférieur à la quantité du
+    // Médicament dans le stock, ainsi que de vérifier que le médicament
+    // Existe déja.
+    for (int i = 0; i < commande -> nombre_medicaments; i++) {
+        
+        // Charger le médicament
+        long int medic_id = commande -> medicaments[i][0];
+        Medicament* medicament = get_medicament_from_id(MEDICAMENTS_FILENAME, medic_id);
+        
+        // Si ce médicament n'exist pas, fermer le fichier et sortir de la fonction
+        // ( aka. ne vendre rien )
+        if (!medicament) { fclose(file); return; }
+        
+        // Augmenter la quantité de ce médicament dans le stock
+        medicament -> quantite += commande -> medicaments[i][1];
+        
+        // Enregistrer ce changement
+        save_medicament(MEDICAMENTS_FILENAME, medicament);
+        
+        // Libérer le médicament
+        free(medicament);
+        
+    }
+        
     // Sauvegarder la commande
     fwrite(commande, sizeof(Commande), 1, file);
     
@@ -106,6 +100,8 @@ LinkedList* get_commandes_from_date(char* filename, char* date) {
             user_time.tm_mon == commande_time.tm_mon &&
             user_time.tm_mday == commande_time.tm_mday) {
             linked_list_append(&commandes, commande);
+        } else {
+            free(commande);
         }
         
     } while (1);

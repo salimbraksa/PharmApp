@@ -9,7 +9,7 @@
 #include "medicament_controller.h"
 #include "sb_file.h"
 
-void sauvegarder_medicament(char* filename, Medicament* medicament) {
+void save_medicament(char* filename, Medicament* medicament) {
     
     // Avant tout, tester si medicament n'est pas NULL
     if (!medicament) return;
@@ -173,12 +173,13 @@ Commande* medicament_add_to_commande(Medicament* medicament, Commande* commande)
     
     // Vérifier si la commande ne peut pas contenir le médicament
     if (commande -> nombre_medicaments >= MAX_MEDICAMENTS_IDS) {
-        long int ids[0] = {};
-        use_commande = creer_commande(time(NULL), 0, ids);
+        long int ids[1][2] = { {0, 0} };
+        use_commande = create_commande(time(NULL), 0, ids);
     }
     
-    // Ajouter l'id du médicament
-    (use_commande -> medicaments_ids)[(use_commande->nombre_medicaments)++] = medicament -> medicament_id;
+    // Ajouter l'id du médicament et initializer sa quantité par 1
+    use_commande -> medicaments[use_commande->nombre_medicaments++][0] = medicament -> medicament_id;
+    use_commande -> medicaments[use_commande->nombre_medicaments][1]++;
     
     // Si la on utiliser une nouvelle commande, on doit la retourner
     if (use_commande -> commande_id != commande -> commande_id) return use_commande;

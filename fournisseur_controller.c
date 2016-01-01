@@ -8,7 +8,7 @@
 
 #include "fournisseur_controller.h"
 
-void sauvegarder_fournisseur(char* filename, Fournisseur* fournisseur) {
+void save_fournisseur(char* filename, Fournisseur* fournisseur) {
     
     // Avant tout, tester si fournisseur n'est pas NULL
     if (!fournisseur) return;

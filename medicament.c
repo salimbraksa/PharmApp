@@ -12,6 +12,7 @@ void set_medicament_data(Medicament* medicament,
                          char* nom,
                          char* description,
                          double prix,
+                         int quantite,
                          int seuil,
                          int nombre_fournisseurs,
                          long int default_fournisseur_id,
@@ -19,24 +20,24 @@ void set_medicament_data(Medicament* medicament,
 
 // Implémentation des fonctions
 
-Medicament* creer_medicament(char* nom, char* description, double prix, int seuil, int nombre_fournisseurs, long int default_founrnisseur_id, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
+Medicament* create_medicament(char* nom, char* description, double prix, int quantite, int seuil, int nombre_fournisseurs, long int default_founrnisseur_id, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
     
     // Alloc new Medicament
     Medicament* medicament = (Medicament *)malloc(sizeof(Medicament));
     
     // Set properties
     medicament -> medicament_id = -1;
-    set_medicament_data(medicament, nom, description, prix, seuil, nombre_fournisseurs, default_founrnisseur_id, fournisseurs_ids);
+    set_medicament_data(medicament, nom, description, prix, quantite, seuil, nombre_fournisseurs, default_founrnisseur_id, fournisseurs_ids);
     
     // Return
     return medicament;
     
 }
 
-void modifier_medicament(Medicament* medicament, char* nom, char* description, double prix, int seuil, int nombre_fournisseurs, long int default_fournisseur_id, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
+void modifier_medicament(Medicament* medicament, char* nom, char* description, double prix, int quantite, int seuil, int nombre_fournisseurs, long int default_fournisseur_id, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
     
     // Set medicament data
-    set_medicament_data(medicament, nom, description, prix, seuil, nombre_fournisseurs, default_fournisseur_id, fournisseurs_ids);
+    set_medicament_data(medicament, nom, description, prix, quantite, seuil, nombre_fournisseurs, default_fournisseur_id, fournisseurs_ids);
     
 }
 
@@ -61,7 +62,7 @@ void edit_medicament_fournisseur(Medicament* medicament, long int fournisseur_id
 
 // Helpers
 
-void set_medicament_data(Medicament* medicament, char* nom, char* description, double prix, int seuil, int nombre_fournisseurs, long int default_fournisseur_id, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
+void set_medicament_data(Medicament* medicament, char* nom, char* description, double prix, int quantite, int seuil, int nombre_fournisseurs, long int default_fournisseur_id, int fournisseurs_ids[MAXIMUM_FOURNISSEURS]) {
     
     // Copie nom & description
     char* copied_nom = (char*)malloc(sizeof(char) * strlen(nom));

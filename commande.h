@@ -17,18 +17,18 @@
 
 /// Définition de la structure Commande
 typedef struct {
-
+    
     long int commande_id;
     time_t date_time;
     
     int nombre_medicaments;
-    long int medicaments_ids[MAX_MEDICAMENTS_IDS];
-
+    long int medicaments[MAX_MEDICAMENTS_IDS][2];
+    
 } Commande;
 
 /// Permet de créer une nouvelle Commande
-Commande* creer_commande(time_t date_time,
-                         int nombre_medicamants,
-                         long int medicaments_ids[MAX_MEDICAMENTS_IDS]);
+Commande* create_commande(time_t date_time,
+                          int nombre_medicamants,
+                          long int medicaments[MAX_MEDICAMENTS_IDS][2]);
 
 #endif /* commande_h */

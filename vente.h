@@ -17,18 +17,18 @@
 
 /// Définition de la structure Vente
 typedef struct {
-
+    
     long int vente_id;
     time_t date_time;
-
+    
     int nombre_medicaments;
-    int medicaments_ids[VENTE_MAX_MEDICAMENTS_IDS];
-
+    int medicaments[VENTE_MAX_MEDICAMENTS_IDS][2];
+    
 } Vente;
 
 /// Permet de créer une nouvelle Vente
-Vente* creer_vente(time_t date_time,
-                         int nombre_medicamants,
-                         int medicaments_ids[VENTE_MAX_MEDICAMENTS_IDS]);
+Vente* create_vente(time_t date_time,
+                    int nombre_medicamants,
+                    int medicaments[VENTE_MAX_MEDICAMENTS_IDS][2]);
 
 #endif /* vente_h */
