@@ -38,4 +38,7 @@ LinkedList* get_medicament_from_name(char* filename, char* name);
 /// Permet de retourner les fournisseurs d'un médicament
 LinkedList* get_fournisseurs_from_medicament(char* filename, long int medicament_id);
 
+/// Permet de marquer le médicament qu'il doit être commander automatiquement
+void should_commande_medicament(Medicament* medicament);
+
 #endif /* medicament_controller_h */

@@ -136,3 +136,59 @@ LinkedList* get_commandes(char* filename) {
     return commandes;
     
 }
+
+void automatically_commande_medicaments() {
+    
+    // Ouvrir le fichier
+    FILE* file = fopen("needed_medics", "rb");
+    
+    // Tester
+    if (!file) return;
+    
+    // Initializer une premiere commande
+    long int medics[0][2] = {};
+    Commande* commande = create_commande(time(NULL), 0, medics);
+    
+    // Itérer
+    do {
+        
+        // Charger l'id du médicament
+        long int medic_id;
+        if (!fread(&medic_id, sizeof(long int), 1, file)) break;
+        
+        // Charger le médicament
+        Medicament* medicament = get_medicament_from_id(MEDICAMENTS_FILENAME, medic_id);
+        
+        // Ajouter le médicament à la commande
+        Commande* next_commande = medicament_add_to_commande(medicament, commande);
+        
+        // Si ...
+        if (next_commande) {
+            
+            // Sauvegarder la commande précedente
+            save_commande(COMMANDES_FILENAME, commande);
+            
+            // Libérer la commande précedente
+            free(commande);
+            
+            // Utiliser la commande suivante
+            commande = next_commande;
+            
+        }
+        
+        // Libérer
+        free(medicament);
+        
+    } while (1);
+    
+    // Sauvegarder la commande
+    save_commande(COMMANDES_FILENAME, commande);
+    
+    // Fermer le fichier
+    fclose(file);
+    
+    // Vider le fichier
+    file = fopen("needed_medics", "wb");
+    fclose(file);
+    
+}

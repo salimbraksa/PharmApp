@@ -75,6 +75,7 @@ void set_medicament_data(Medicament* medicament, char* nom, char* description, d
     strcpy(medicament->description, copied_description);
     medicament -> prix = prix;
     medicament -> seuil = seuil;
+    medicament -> quantite = quantite;
     medicament -> nombre_fournisseurs = nombre_fournisseurs;
     medicament -> default_fournisseur_id = default_fournisseur_id;
     for (int i = 0; i < nombre_fournisseurs; i++) {

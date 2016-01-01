@@ -42,6 +42,13 @@ void save_vente(char* filename, Vente* vente) {
         // Diminuer la quantité de ce médicament dans le stock
         medicament -> quantite -= vente -> medicaments[i][1];
         
+        // Si la quantité du médicament est inférieur à son seuil
+        // Marquer le médicament d'être commander automatiquement lors
+        // De la prochaine ouverture du programme
+        if (medicament -> quantite < medicament -> seuil) {
+            should_commande_medicament(medicament);
+        }
+        
         // Enregistrer ce changement
         save_medicament(MEDICAMENTS_FILENAME, medicament);
         

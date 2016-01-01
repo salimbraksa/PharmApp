@@ -28,6 +28,10 @@ Commande* get_last_commande(char* filename);
 /// Permet de retourner une liste de commandes d'une date donnée
 LinkedList* get_commandes_from_date(char* filename, char* date);
 
+/// Permet de commander automatiquement les médicaments qui ont
+/// Une quantité inférieur à leur seuil
+void automatically_commande_medicaments();
+
 /// Permet de charger tout les commandes à partir d'un fichier
 LinkedList* get_commandes(char* filename);
 

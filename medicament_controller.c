@@ -173,15 +173,34 @@ Commande* medicament_add_to_commande(Medicament* medicament, Commande* commande)
     
     // Vérifier si la commande ne peut pas contenir le médicament
     if (commande -> nombre_medicaments >= MAX_MEDICAMENTS_IDS) {
-        long int ids[1][2] = { {0, 0} };
+        long int ids[0][2] = {};
         use_commande = create_commande(time(NULL), 0, ids);
     }
     
+    // Incrémenter le nombre de médicaments
+    use_commande->nombre_medicaments++;
+    
     // Ajouter l'id du médicament et initializer sa quantité par 1
-    use_commande -> medicaments[use_commande->nombre_medicaments++][0] = medicament -> medicament_id;
-    use_commande -> medicaments[use_commande->nombre_medicaments][1]++;
+    use_commande -> medicaments[use_commande->nombre_medicaments-1][0] = medicament -> medicament_id;
+    use_commande -> medicaments[use_commande->nombre_medicaments-1][1] = medicament -> seuil;
     
     // Si la on utiliser une nouvelle commande, on doit la retourner
     if (use_commande -> commande_id != commande -> commande_id) return use_commande;
     return NULL;
+}
+
+void should_commande_medicament(Medicament* medicament) {
+    
+    // Ouvrir le fichier
+    FILE* file = fopen("needed_medics", "ab");
+    
+    // Tester
+    if (!file) return;
+    
+    // Ecrire l'id du medicament
+    fwrite(&(medicament->medicament_id), sizeof(long int), 1, file);
+    
+    // Fermer
+    fclose(file);
+    
 }
