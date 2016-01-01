@@ -32,7 +32,7 @@ void save_commande(char* filename, Commande* commande){
         long int medic_id = commande -> medicaments[i][0];
         Medicament* medicament = get_medicament_from_id(MEDICAMENTS_FILENAME, medic_id);
         
-        // Si ce médicament n'exist pas, fermer le fichier et sortir de la fonction
+        // Si ce médicament n'existe pas, fermer le fichier et sortir de la fonction
         // ( aka. ne vendre rien )
         if (!medicament) { fclose(file); return; }
         

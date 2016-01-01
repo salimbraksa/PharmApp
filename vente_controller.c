@@ -31,7 +31,7 @@ void save_vente(char* filename, Vente* vente) {
         long int medic_id = vente -> medicaments[i][0];
         Medicament* medicament = get_medicament_from_id(MEDICAMENTS_FILENAME, medic_id);
         
-        // Si ce médicament n'exist pas, fermer le fichier et sortir de la fonction
+        // Si ce médicament n'existe pas, fermer le fichier et sortir de la fonction
         // ( aka. ne vendre rien )
         if (!medicament) { fclose(file); return; }
         
