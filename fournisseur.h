@@ -24,12 +24,12 @@ typedef struct {
 } Fournisseur;
 
 /// Permet de créer un nouveau Fournisseur
-Fournisseur* creer_fournisseur(char* nom,
+Fournisseur* create_fournisseur(char* nom,
                                char* email,
                                char* telephone);
 
 /// Permet de modifier les informations d'un fournisseur
-void modifier_fournisseur(Fournisseur* fournisseur,
+void edit_fournisseur(Fournisseur* fournisseur,
                           char* nom,
                           char* email,
                           char* telephone);

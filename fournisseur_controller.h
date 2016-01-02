@@ -13,6 +13,7 @@
 #include "linked_list.h"
 #include "fournisseur.h"
 #include "sb_string.h"
+#include "sb_file.h"
 
 /// Permet de save la fournisseur dans un fichier
 void save_fournisseur(char* filename, Fournisseur* fournisseur);

@@ -92,7 +92,7 @@ LinkedList* get_ventes(char* filename) {
     
 }
 
-LinkedList* get_ventes_from_date(char* filename, char* date) {
+LinkedList* get_ventes_from_date(char* filename, char* date, DateComponents ignore_date_components) {
     
     // Ouvrir le fichier
     FILE* flot = fopen(filename, "rb");
@@ -114,9 +114,9 @@ LinkedList* get_ventes_from_date(char* filename, char* date) {
         struct tm user_time;
         strptime(date, "%Y-%m-%d", &user_time);
         
-        if (user_time.tm_year == vente_time.tm_year &&
-            user_time.tm_mon == vente_time.tm_mon &&
-            user_time.tm_mday == vente_time.tm_mday) {
+        if ( (( user_time.tm_year == vente_time.tm_year || (Year && ignore_date_components) ) &&
+            ( user_time.tm_mon == vente_time.tm_mon || (Month && ignore_date_components) ) &&
+            user_time.tm_mday == vente_time.tm_mday) || (Day && ignore_date_components) ) {
             linked_list_append(&ventes, vente);
         }
         

@@ -13,6 +13,9 @@ void save_fournisseur(char* filename, Fournisseur* fournisseur) {
     // Avant tout, tester si fournisseur n'est pas NULL
     if (!fournisseur) return;
     
+    // Créer le fichier s'il n'existe pas
+    if (!file_exist(filename)) create_file(filename);
+    
     // Cherche si le médicament existe
     // Si oui, il suffit de modifier le médicament
     // Existant, Sinon on crée un nouveau médicament
